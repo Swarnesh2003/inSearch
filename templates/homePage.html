@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incentive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homePage.css')}}">
+</head>
+<body>
+    <div class="navbar" id="navbar">
+        <h2>Incentive</h2>
+        <div class="navcont">
+            <a class="nav-home" href="#displayUnit">Home   </a>
+            <a class="nav-home" href="#product">Products </a>
+            <a class="nav-home" href="#product">Services</a>
+            <a class="nav-home" href="#about">About</a>
+            <a class="nav-home" href="#connect">Connect  </a>
+            <a class="nav-home" href="#contact">Contact-Us </a>
+        </div>
+    </div>
+    <div class="productDrop">
+        
+    </div>
+    <div class="displayUnit" id="displayUnit">
+        <div class="helo">
+            <img class="mySlides" src="{{url_for('static', filename='paper1.jpg')}}">
+            <img class="mySlides" src="{{url_for('static', filename='paper2.jpg')}}">
+            <img class="mySlides" src="{{url_for('static', filename='paper3.jpg')}}">
+            <img class="mySlides" src="{{url_for('static', filename='paper4.jpg')}}">
+          </div>
+    </div>
+    <div class="product" id="product">
+        <hr class="style14">
+        <h2>Our Products</h2>
+        <button class="devProd" onclick="webLogin()">inDevs
+            <p>Earn through your websites</p>
+        </button>
+        <button class="searchProd" onclick="SearchLogin()">inSearch
+            <p>An ultimate search engine</p>
+        </button>
+        <button class="advProd" onclick="advLogin()">inAdvs
+            <p>Advertise your product</p>
+        </button>
+        
+    </div>
+    <div class="about" id="about">
+        <hr class="style14">
+        <h2>About Us</h2>
+        <p>We at Incentive Technology are determined in taking technology to the next level. Founded by Thirusha, Athmika and Swarnesh on 2022, The company is fully focused on bringing innovative technological products and providing technological services with atmost customer satisfaction..   </p>
+    </div>
+    
+    <div class="connect" id="connect">
+        <hr class="style14">
+        <h2>Connect with Us..</h2>
+        <div class="icons">
+            
+            <a href="#" class="linkedIn"><img src="{{url_for('static', filename='linkedinicon.png')}}""></a>
+            <a href="#" class="twitter"><img src="{{url_for('static', filename='twitter.png')}}"></a>
+            <a href="#" class="facebook"><img src="{{url_for('static', filename='facebookicon.png')}}"></a>
+            <a href="#" class="instagram"><img src="{{url_for('static', filename='instagram.png')}}"></a>
+        </div>
+    </div>
+    
+    <div class="contact" id="contact">
+        <hr class="style14">
+        <h2>Contact Us</h2>
+        <div class="details">
+            <div class="athu det">
+                <h3>Athmika</h3>
+                <p>athmika@incentive.com</p>
+                <p>9876877612</p>
+            </div>
+            <div class="thiru det">
+                <h3>Thirusha</h3>
+                <p>thirusha@incentive.com</p>
+                <p>9500334396</p>
+            </div>
+            <div class="swarnesh det">
+                <h3>Swarneshwar</h3>
+                <p>swarnesh@incentive.com</p>
+                <p>8610042672</p>
+            </div>
+        </div>
+        <div class="companyDet">
+            <h3>INCENTIVE TECHNOLOGY</h3>
+            <p>PSG Tech, Peelamedu</p>
+            <p>Coimbatore, Tamil Nadu</p>
+            <p>mail   : info@incentive.com</p>
+            <p>contact: 9876543210</p>
+        </div>
+    </div>
+    
+    <div class="brand">
+        <h2>©Incentive Technologies</h2>
+        <p>Innovate   -    Implement    -    Improve</p>
+    </div>
+    <div class="footer">
+        <p>privacy</p>
+        <p>©copyrights</p>
+        <p>disclaimer</p>
+        
+    </div>
+    
+
+    <script src="{{url_for('static', filename='homePage.js')}}"></script>
+
+    
+</body>
+</html>

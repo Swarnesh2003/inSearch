@@ -1,0 +1,31 @@
+*{
+    background: rgb(243, 241, 241);
+   
+}
+
+.content{
+    color: rgb(2, 133, 41);
+}
+
+.topright {
+
+  background: rgb(12, 240, 156);  
+  color: rgb(11, 11, 11); 
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 25px;
+  height: 100%;
+  width:20%;
+
+}
+.topright button{
+  width:98%;
+  margin:2px;
+  height: 70%;
+  background-image: url('add.jpg');
+  background-size: cover;
+}
+.topright button:hover{
+    cursor:pointer;
+}

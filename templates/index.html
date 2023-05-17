@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="main">
+       <div class="form-container">
+            <h1>Member Login</h1>
+            <p>Please fill in your basic info</p>
+            <div class="userinp">
+                <input type="text" id="user1" placeholder="Username">
+                <input type="password" id="pw1" placeholder="Password">
+            </div>
+            <div class="signinbut"><button onclick="myFunction()">LOGIN</button></div>
+            <div class="fpbut"><button>Forgot Password?</button></div>
+        </div>
+        <div class="text-container">
+            <!--<h1>Sign Up</h1>
+            <p>Using your social media account</p>-->
+            <img class="logo" src="{{url_for('static', filename='incLogo1.png')}}">
+            <img class="logo1" src="{{url_for('static', filename='insearch.png')}}">
+            <div class="cb1">
+                <input type="checkbox" id="terms1" name="terms1" value="terms">
+                <label for="terms1">By Signing up I agree with terms and conditions</label>
+            </div>
+            <a href="/signUp">Create Account?</a>
+        </div>
+    </div>
+    <ul>
+        <li><button>privacy</button></li>
+        <li><button>about</button></li>
+        <li><button>contact</button></li>
+    </ul>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script>
+        function myFunction()
+        {
+            var terms=document.getElementById("terms1");
+            if(terms.checked==true)
+            {
+                const user= document.getElementById("user1").value;
+                const pass=document.getElementById("pw1").value;
+                const dict_values = {user,pass};
+                console.log(dict_values);
+                const s = JSON.stringify(dict_values);
+                console.log(s);
+                $.ajax({
+                    url:"/check",
+                    type:"POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(s),
+                    success: function(response){
+                        //console.log(response);
+                        //console.log(response["passent"]);
+                        const fin=JSON.parse(response);
+                        console.log(fin['user']);
+                        console.log(fin['passent']);
+                        console.log(fin['passcrct']);
+                        if (fin['passent']==fin['passcrct'])
+                        {
+                            console.log("login successful");
+                            window.location="/search";
+                        }
+                        else{
+                            window.alert('incorrect password');
+                        }
+                    },
+                    error: function(error){
+                        window.alert("incorrect credentials");
+                    }
+                });
+            }
+            else{
+                window.alert('Please agree the terms and conditions to continue!!');
+            }
+
+        }
+    </script>
+    
+</body>
+</html>

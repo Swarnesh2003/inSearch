@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css')}}">
+    <title>SignUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+</head>
+<body>
+    <div class="main">
+        <div class="form1-container">
+            <h1>Create Account</h1>
+            <p>Please fill in your basic info</p>
+            <div class="signinp">
+                <input type="text" id="name" placeholder="Name">
+                <input type="text" id="compname" placeholder="Company Name">
+                <input type="tel" id="tel" placeholder="Contact">
+                <input type="tel" id="telph" placeholder="Telephone">
+                <input type="email" id="email" placeholder="email">
+                <input type="text" id="user1" placeholder="Username">
+                <input type="password" id="pw1" placeholder="Password">
+                <input type="password" id="pw2" placeholder="Confirm Password">
+            </div>
+            <div class="signupbut"><button onclick="myFunction1()">SIGN UP</button></div>
+            <div class="login">
+                <p>Already have an account?</p>
+                <a href="/signinadv">Login</a>
+            </div>
+        </div>
+
+
+
+        <div class="text1-container">
+            <div class="helo" style="max-width:400px">
+                <img class="mySlides" src="{{url_for('static', filename='inAdvs.jpg')}}" >
+                <img class="mySlides" src="{{url_for('static', filename='inAdvs1.jpg')}}">
+                <img class="mySlides" src="{{url_for('static', filename='inDevs1.jpg')}}">
+                <img class="mySlides" src="{{url_for('static', filename='incent1.jpg')}}">
+              </div>
+        </div>
+
+
+    </div>
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script>
+    function myFunction1() 
+    {
+        check=1;
+        const name=document.getElementById("name").value;
+        const compname=document.getElementById("compname").value;
+        const telp= document.getElementById("tel").value;
+        const telph= document.getElementById("telph").value;
+        const mail= document.getElementById("email").value;
+        const user= document.getElementById("user1").value;
+        if(document.getElementById("pw1").value == document.getElementById("pw2").value)
+        {
+            pass=document.getElementById("pw1").value;
+            check=0;
+        }
+        else{
+            window.alert("Password Doesn't match");
+            check=1;
+        }
+        if(check==0)
+        {
+            const dict_values = {name,compname,telp, telph, mail, user, pass};
+            //console.log(dict_values);
+            const s = JSON.stringify(dict_values);
+            //console.log(s)
+            $.ajax({
+                url:"/testAdv",
+                type:"POST",
+                contentType: "application/json",
+                data: JSON.stringify(s),
+                success: function(response){
+                    if (response=="true")
+                    {
+                        window.alert("userid already taken")
+                    }
+                    else{
+                        window.alert("signed up");
+                    }
+                }
+            });
+
+        }
+    }
+        //location.replace("index.html");
+
+  var myIndex = 0;
+  carousel();
+  function carousel()
+  {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++)
+      {
+          x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 3000); // Change image every 2 seconds
+  }
+    </script>
+</body>
+</html>

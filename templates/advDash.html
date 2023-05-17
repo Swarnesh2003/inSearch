@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='advDashStyle.css')}}">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+
+    <title>dashboard</title>
+</head>
+<body>
+    <div class="main">
+    <div class="sidebar">
+        <div class="branding">
+                <img src="{{url_for('static', filename='incLogo1.png')}}">
+        </div>
+        <div class="sc">
+            <div class="panel">
+                <p>Panel</p>
+            </div>
+            <div class="dashCont">
+                <button onclick="dashboard()" class="dashboard"><img src="{{url_for('static', filename='dashboard.png')}}">Dashboard</button>
+                <button onclick="publish()" class="plus"><img src="{{url_for('static', filename='plus.png')}}">Publish Add</button>
+                <button onclick="update()" class="update"><img src="{{url_for('static', filename='refresh.png')}}">Update Add</button>
+                <button onclick="remove()" class="delete"><img src="{{url_for('static', filename='trash.png')}}">Remove Add</button>
+                <button onclick="wallet()" class="wallet"><img src="{{url_for('static', filename='wallet.png')}}">My wallet</button>
+                <button onclick="stat()" class="statistics"><img src="{{url_for('static', filename='diagram.png')}}">Statistics</button>
+            </div>
+            <hr class="style14">
+            <div class="low">
+                <button onclick="setting()" class="settings"><img src="{{url_for('static', filename='setting.png')}}">Settings</button>
+                <button onclick="logout()" class="logout"><img src="{{url_for('static', filename='emergency-exit.png')}}">Logout</button>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h6>Welcome Back!</h6>
+        <h2>{{name}}</h2>
+        <div id="cont">
+        </div>
+    </div>
+    <div class="corner">
+        <div class="icons">
+            <button onclick="inbox()" class="inbox"><img src="{{url_for('static', filename='email.png')}}"></button>
+            <button onclick="Notificat()" class="notification"><img src="{{url_for('static', filename='bell.png')}}"></button>
+            <div class="us1">
+                <button onclick="profile()" class="profile"><img src="{{url_for('static', filename='user.png')}}"></button>
+            </div>
+        </div>
+        <div class="right">
+            <h2>Website link will be here</h2>
+        </div>
+    </div>   
+    </div> 
+    <script type="text/babel">
+        function commitPublish(){
+
+
+        }
+       function Hello3(){
+        return (
+            <div class="dashboard">
+                <div class="header">
+                    <div class="wallet headComp">
+                        <h5>Wallet Balance</h5>
+                        <h2>${{wbalance}}</h2>
+                    </div>
+                    <div class="views headComp">
+                        <h5>Total Displays</h5>
+                        <h2>150</h2>
+                    </div>
+                    <div class="clicks headComp">
+                        <h5>Total Clicks</h5>
+                        <h2>45</h2>
+                    </div>
+                </div>
+            </div>
+           )}
+           function Hello2(){
+            return(
+            <div class="publish">
+                <h1>Publish</h1>
+                <div class="advName">
+                <input type="text" placeholder="Enter the Advertisement Name"></input>
+                </div>
+                <div class="AdvInp">
+                    <h5>Enter your Advertisement Here:</h5>
+                    <input type="text" class="inpAdd"></input>
+                </div>
+                <div class="addTag">
+                    <input type="text" id="newTag" placeholder="Enter the Tag"></input>
+                    <button onclick="addT()" class="addTagImg">+</button>
+                </div> 
+                <button onclick="commitPublish()">Publish</button>
+          </div>
+                
+        )}
+
+          function Hello4()
+          {
+            return(
+                <div class="updateCont">
+                    <h1>Update</h1>
+                    <div class="editName">
+                        <p>Edit Name </p>
+                        <input type="text" placeholder="Enter new Name"></input> 
+                    </div> 
+                    <div class="editLink">   
+                        <p>Edit Link </p>
+                        <input type="text" placeholder="Enter new link"></input>                       
+                    </div>
+                    <div class="addTag">
+                        <input type="text" placeholder="Enter the Tag"></input>
+                        <button onclick="addT()" class="addTagImg">+</button>
+                    </div> 
+                    <button onclick="commitUpdate()">Update</button>
+                </div>
+            )
+          }
+      function publish(){
+        ReactDOM.render(<Hello2 />, document.getElementById('cont'))
+      }
+      function dashboard(){
+        ReactDOM.render(<Hello3 />, document.getElementById('cont'))
+      }
+      function update(){
+        ReactDOM.render(<Hello4 />, document.getElementById('cont'))
+      }
+      function addT()
+      {
+        const user= document.getElementById("newTag").value;
+        const dict_values = {user};
+        console.log(dict_values);
+        const s = JSON.stringify(dict_values);
+      }
+
+    </script>
+   
+  
+
+
+</body>
+</html>

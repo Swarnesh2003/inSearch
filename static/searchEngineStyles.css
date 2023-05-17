@@ -1,0 +1,142 @@
+
+body{
+    background-image:url("seachBackground4.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    align-items: center;
+    border:0px;
+    padding:60px;
+}
+.branding{
+    margin-top: 100px;
+    margin-bottom:20px;
+}
+.branding img{
+    height:70px;
+
+}
+.search input{
+    height:30px;
+    width: 500px;
+    border-radius: 20px;
+    border:none;
+    box-shadow:rgba(0,0,0,0.35) 0px 5px 15px;
+    text-align:left 100px;
+    /*margin: 7px;*/
+    padding: 5px;
+}
+.account{
+    width:40px;
+    position:absolute;
+    right:30px;
+    top:25px;
+}
+.account button{
+    height:30px;
+    width:30px;
+    border:none;
+    border-radius: 30px;
+    align-items:right;
+}
+.account button i{
+    font-size:20px;
+}
+.search button{
+    height:36px;
+    width: 36px;
+    border-radius: 20px;
+    box-shadow:rgba(0,0,0,0.35) 0px 5px 15px;
+    border:none;
+}
+.search{
+    display: block;
+}
+.search input{
+    display: inline;
+}
+.searchbutton{
+    display: inline;
+}
+.searchbutton  :hover{
+    cursor: pointer;
+    background-color:#808080;
+}
+#sidebar{
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    position:absolute;
+    top:68px;
+    right:25px;
+    height:45%;
+    width:20%;
+    border-radius:15px;
+    padding: 15px;
+    box-shadow:rgba(0,0,0,0.35) 0px 5px 15px;
+}
+.sidebarManipulate a{
+    display: block;
+    font-size: 14px;
+    margin: 15px;
+}
+#sidebar h2{
+    margin-top:2px;
+    margin-bottom: 1px;
+}
+#sidebar p{
+    margin-top:0px;
+    margin-bottom: 20px;s
+
+}
+#sidebar i{
+    margin-top:10px;
+    margin-bottom:10px;
+    font-size: 40px;
+    border-radius: 45px;
+    background-color: royalblue ;
+    height: 60px;
+    width: 70px;
+    padding-top: 8px;
+}
+#trieList{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    position: absolute;
+    margin-left: 315px;
+    border-radius:5px;
+    background-color:aliceblue;
+}
+#trieList button:hover{
+    cursor:pointer;
+    background-color:#d7d6d6;
+}
+
+#trieList button{
+    background-color: white;
+    color: rgb(29, 29, 29);
+    height: 30px;
+    width: 450px;
+    padding-top: 3px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-bottom: thin;
+    border-color: rgb(178, 179, 179);
+
+
+}
+.invisible{
+    visibility:hidden;
+}
+.account :hover{
+    cursor:pointer;
+    background-color:#808080;
+}
+.footer{
+    margin-top:220px;
+}
+.footer img{
+    height:45px;
+    width:120px;
+}

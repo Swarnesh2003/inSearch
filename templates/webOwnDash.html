@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='webOwnDashStyle.css')}}">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    
+    
+    <title>dashboard</title>
+</head>
+<body>
+     <div class="main">
+     <div class="sidebar">
+        <div class="branding">
+                <img src="{{url_for('static', filename='incLogo1.png')}}">
+        </div>
+        <div class="sc">
+            <div class="panel">
+                <p>Panel</p>
+            </div>
+            <div class="dashCont">
+                <button onclick="dashboard()" class="dashboard"><img src="{{url_for('static', filename='dashboard.png')}}">Dashboard</button>
+                <button onclick="publish()" class="plus"><img src="{{url_for('static', filename='plus.png')}}">Publish Website</button>
+                <button onclick="update()" class="update"><img src="{{url_for('static', filename='refresh.png')}}">Update Website</button>
+                <button onclick="remove()" class="delete"><img src="{{url_for('static', filename='trash.png')}}">Remove Website</button>
+                <button onclick="wallet()" class="wallet"><img src="{{url_for('static', filename='wallet.png')}}">My wallet</button>
+                <button onclick="stat()" class="statistics"><img src="{{url_for('static', filename='diagram.png')}}">Statistics</button>
+            </div>
+            <hr class="style14">
+            <div class="low">
+                <button onclick="setting()" class="settings"><img src="{{url_for('static', filename='setting.png')}}">Settings</button>
+                <button onclick="logout()" class="logout"><img src="{{url_for('static', filename='emergency-exit.png')}}">Logout</button>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h6>Welcome Back!</h6>
+        <h2>{{name}}</h2>
+        <div id="cont">
+        </div>
+    </div>
+    <div class="corner">
+        <div class="icons">
+            <button onclick="inbox()" class="inbox"><img src="{{url_for('static', filename='email.png')}}"></button>
+            <button onclick="Notificat()" class="notification"><img src="{{url_for('static', filename='bell.png')}}"></button>
+            <div class="us1">
+                <button onclick="profile()" class="profile"><img src="{{url_for('static', filename='user.png')}}"></button>
+            </div>
+        </div>
+        <div class="right">
+            <h2>Website link will be here</h2>
+        </div>
+    </div>   
+    </div> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script type="text/babel">
+        function updateChanges()
+        {
+            var id=document.getElementById('webId').value;
+            var name=document.getElementById('newName').value;
+            var link=document.getElementById('newLink').value;
+            const dict_values = {id,name,link};
+            //console.log(dict_values);
+            const s = JSON.stringify(dict_values);
+            $.ajax({
+                url:"/updateWebDetail",
+                type:"POST",
+                contentType: "application/json",
+                data: JSON.stringify(s),
+                success(responce)
+                {
+                    if(responce=='true')
+                    {
+                        alert('Website details updated successfully. ')
+                    }
+                }
+               
+            });
+            
+        }
+        function commitRemove(){
+            var id=document.getElementById('webId').value;
+            const dict={id}
+            const s=JSON.stringify(dict)
+            console.log(s)
+            $.ajax({
+                url:"/removeWeb",
+                type:"POST",
+                contentType: "application/json",
+                data: JSON.stringify(s),
+                success(responce)
+                {
+                    if(responce=='true')
+                    {
+                        alert('Website Removed')
+                    }
+                }
+               
+            });
+
+        }
+        function commitWithdraw(){
+            var amt=document.getElementById('withdrawamt').value;
+            const dict_values = {amt};
+            //console.log(dict_values);
+            const s = JSON.stringify(dict_values);
+            $.ajax({
+                url:"/withdraw",
+                type:"POST",
+                contentType: "application/json",
+                data: JSON.stringify(s),
+                success(responce)
+                {
+                    if(responce=='true')
+                    {
+                        alert('you will be directed to a new page!')
+                        window.location.href="/withdrawpage"
+                    }
+                    else{
+                        alert("error withdrawing amt")
+                    }
+                }
+               
+            });
+        }
+        function commitPublish(){
+            var name=document.getElementById('webName').value;
+            var link=document.getElementById('webLink').value;
+            const dict_values = {name,link};
+            //console.log(dict_values);
+            const s = JSON.stringify(dict_values);
+            $.ajax({
+                url:"/insertWebDetail",
+                type:"POST",
+                contentType: "application/json",
+                data: JSON.stringify(s),
+                success(responce)
+                {
+                    if(responce=='true')
+                    {
+                        alert('website name already taken')
+                    }
+                    else{
+                        alert("Website Published")
+                    }
+                }
+               
+            });
+            
+
+        }
+        function Hello6(){
+            return(
+                <div class="header">
+                    <div class="wallet headComp">
+                        <h5>Wallet Balance</h5>
+                        <h2>${{wbalance}}</h2>
+                    </div>
+                    <div class="withdraw">
+                        <input type="text" id="withdrawamt" placeholder="Enter the amount to be withdrawn"></input>
+                        <button onClick={commitWithdraw}>withdraw</button>
+                    </div>    
+                </div>
+
+            )
+
+        }
+       function Hello3(){
+        return (
+            <div class="dashboard">
+                <div class="header">
+                    <div class="wallet headComp">
+                        <h5>Wallet Balance</h5>
+                        <h2>${{wbalance}}</h2>
+                    </div>
+                    <div class="views headComp">
+                        <h5>Total Displays</h5>
+                        <h2>{{total}}</h2>
+                    </div>
+                    
+                </div>
+            </div>
+           )}
+           function Hello5(){
+            return(
+                <div className="remove">
+                    <h1>Remove</h1>
+                    <div className="delId">
+                        <input type="text" id = "webId" placeholder="Enter the WebsiteId to be deleted"></input> 
+                        <button onClick={commitRemove}>Delete</button> 
+                    </div> 
+                    <table>
+                    <thead>
+                    <tr>
+                        <th>Website Id</th>
+                        <th>Website Link</th>
+                        <th>Website Name</th>
+                    </tr>
+                    </thead>    
+                    <tbody>
+                        {% for row in table %}    
+                    <tr>
+                        <td width="150px">{{row[0]}}</td>
+                        <td width="150px">{{row[1]}}</td>
+                        <td width="350px">{{row[2]}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+                    </div>
+
+            )
+           }
+           function Hello2(){
+            return(
+            <div className="publish">
+                <h1>Publish</h1>
+                <div className="addName">
+                <input type="text" id="webName" placeholder="Enter the Website Name"></input>
+                </div>
+                <div className="addlink">
+                    <input type="text" id="webLink" placeholder="Enter the Link"></input>
+                    </div>
+                <button onClick={commitPublish}>Publish</button>    
+                <div className="addTag">
+                    <input type="text" id="newTag" placeholder="Enter the Tag"></input>
+                    <button onClick={addT}>+</button>
+                </div> 
+                
+          </div>
+                
+        )}
+          function Hello7()
+          {
+            return(
+                <table>
+                    
+                    <thead>
+                    <tr>
+                        <th>Website Id</th>
+                        <th>Website Link</th>
+                        <th>Website Name</th>
+                    </tr>
+                </thead>    
+                <tbody>
+                    {% for row in table %}
+                    <tr>
+                        <td width="150px">{{row[0]}}</td>
+                        <td width="150px">{{row[1]}}</td>
+                        <td width="350px">{{row[2]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <h3>Transaction Details</h3>
+                    <thead>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Transaction Date</th>
+                    </tr>
+                </thead>    
+                <tbody>
+                        {% for row in table1 %}    
+                        <tr>
+                            <td width="150px">{{row[0]}}</td>
+                            <td width="150px">{{row[1]}}</td>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+                <h3>View Details</h3>
+                    <thead>
+                    <tr>
+                        <th>Website Id</th>
+                        <th>Website Name</th>
+                        <th>Views</th>
+                    </tr>
+                </thead>    
+                <tbody>
+                        {% for row in table2 %}    
+                        <tr>
+                            <td width="150px">{{row[0]}}</td>
+                            <td width="450px">{{row[1]}}</td>
+                            <td width="50px">{{row[2]}}</td>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+                </table>
+            )
+          }
+          function Hello4()
+          {
+            return(
+                <div className="updateCont">
+                    <h1>Update</h1>
+                    <div className="changes">
+                    <div className="editName">
+                        <input type="text" id = "webId" placeholder="Enter the WebsiteId"></input> 
+                    </div> 
+                    <div className="editName">
+                        <input type="text" id = "newName" placeholder="Enter new Name"></input> 
+                    </div> 
+                    <div className="editLink">   
+                        <input type="text" id = "newLink" placeholder="Enter new link"></input>                       
+                    </div>
+                    <button onClick={updateChanges}>Update</button>
+                    </div>
+                    <div className="addTag">
+                        <input type="text" placeholder="Add New Tag" id="newTag"></input>
+                        <button onClick={addT} className="addTagImg">+</button>
+                    </div> 
+                    
+                    
+                    <table>
+  <thead>
+    <tr>
+        <th>Website Id</th>
+        <th>Website Link</th>
+        <th>Website Name</th>
+    </tr>
+    </thead>    
+    <tbody>
+     {% for row in table %}    
+            <tr>
+                <td width="150px">{{row[0]}}</td>
+                <td width="150px">{{row[1]}}</td>
+                <td width="350px">{{row[2]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+                </div>
+            )
+          }
+      function publish(){
+        ReactDOM.render(<Hello2 />, document.getElementById('cont'))
+      }
+      function dashboard(){
+        ReactDOM.render(<Hello3 />, document.getElementById('cont'))
+      }
+      function update(){
+        ReactDOM.render(<Hello4 />, document.getElementById('cont'))
+      }
+      function remove(){
+        ReactDOM.render(<Hello5 />, document.getElementById('cont'))
+      }
+      function wallet(){
+        ReactDOM.render(<Hello6 />, document.getElementById('cont'))
+      }
+      function stat(){
+        ReactDOM.render(<Hello7 />, document.getElementById('cont'))
+      }
+      function addT()
+      {
+        const tag= document.getElementById("newTag").value;
+        const dict_values = {tag};
+        console.log(dict_values);
+        const s = JSON.stringify(dict_values);
+        $.ajax({
+                url:"/insertWebTag",
+                type:"POST",
+                contentType: "application/json",
+                data: JSON.stringify(s),
+                success(responce){
+                    if(responce=='true'){
+                        alert('tag inserted')
+                    }
+                }
+            });
+        
+      }
+      
+
+    </script>
+   
+  
+
+
+</body>
+</html>

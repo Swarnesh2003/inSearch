@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+   <!-- <input type="checkbox">
+    <div class="toggle">
+        <span class="top_line common"></span>
+        <span class="middle_line common"></span>
+        <span class="bottom_line common"></span>
+    </div>
+    <div class="sidebar">
+        <header>Options</header>
+        <ul>
+           <li><button onclick="profiledisp()"><i class="fa fa-fw fa-user">Profile </i></button></li> 
+           <li><button><i class="fa fa-fw fa-home">Home</i></button></li> 
+           <li><button><i class="fa fa fa-shopping-cart">Cart</i></button></li> 
+           <li><button><i class="fa fa-heart">Wishlist</i></button></li> 
+           <li><button><i class="fa fa-question-circle">Orders</i></button></li> 
+        </ul>
+    </div>-->
+    <div class="nav-bar">
+        <h2>SAT</h2>
+        <div class="nav">
+        <a href="#"><i class="fa fa-fw fa-home">Home</i></a> 
+        <a href="#"><i class="fa fa fa-shopping-cart">Cart</i></a> 
+        <a href="#"><i class="fa fa-heart">Wishlist</i></a> 
+        <a href="#"><i class="fa fa-question-circle">Orders</i></a> 
+    </div> 
+    </div>
+    <div class="main">
+        <h2>Welcome {{ name }} !!</h2>
+    </div>
+    
+    <script>
+        function profiledisp()
+        {
+            var main=document.querySelector('#main');
+            main.style.display='none';
+        }
+    </script>
+</body>
+</html>

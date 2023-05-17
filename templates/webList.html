@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='webliststyle.css')}}">
+    <script src="https://kit.fontawesome.com/161f714a54.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <title>inSearch.com</title>
+</head>
+<body>
+    <div class="branding">
+        <img src="{{url_for('static', filename='insearchlc.png')}}" alt ="branding">
+        <input type="text" id="searchInp" value="{{tag1}}">
+        <div class="searchbutton">
+            <button ><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+    <div id="content"></div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script>
+        var a=""
+        displist()
+        function displist()
+        {
+        var tag=document.getElementById('searchInp').value;
+        const dict={tag}
+        const s=JSON.stringify(dict);
+        $.ajax({
+                    url:"/getWebsiteList",
+                    type:"POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(s),
+                    success: function(responce){
+                        console.log('came');
+                        console.log(responce[0][2])
+                        console.log(responce[0][0]);
+                        a=""
+                        for (let i=0;i<responce.length;i++)
+                        {
+                           
+                                console.log(responce[i][0])
+                                a=a+"<div class='weblink'><button value="+responce[i][3]+" onclick='listbut(this)'>"+responce[i][0]+"</button></div>"
+                               
+                        }
+                        console.log(a)
+                        var searchCont1=document.getElementById('content')
+                        searchCont1.innerHTML=a;
+                        
+                    }})
+
+                    
+            }
+            function listbut(ele)
+            {   
+                console.log('listbut called')
+                ele1=ele.value
+                dict={ele1}
+                console.log(dict);
+                const s=JSON.stringify(dict);
+                $.ajax({
+                    url:"/getWebName",
+                    type:"POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(s),
+                    success: function(responce){
+                        window.location.href = "/openWebsite";
+                    }
+
+                })
+            }
+                
+
+
+    </script>
+</body>
+</html>

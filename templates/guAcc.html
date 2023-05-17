@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="branding">
+            <img src="{{url_for('static', filename='incLogo1.png')}}" alt ="branding">
+        </div>
+        <div class="sc">
+            <button class="myAcc"><img src="{{url_for('static', filename='user.png')}}">My Account</button>
+            <button class="upDet"><img src="{{url_for('static', filename='update.png')}}">Update Details</button>
+            <button class="upDet"><img src="{{url_for('static', filename='recent.png')}}">History</button>
+        </div>
+        <hr>
+        <div class="signOut">
+            <button class="so"><img src="{{url_for('static', filename='logout.png')}}">History</button>
+        </div>
+    </div>
+    <div class="content">
+        <h2>Hello {{user}}!</h2>
+        <div class=""
+    </div>
+</body>
+</html>

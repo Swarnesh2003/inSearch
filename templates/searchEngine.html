@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='searchEngineStyles.css')}}">
+    <script src="https://kit.fontawesome.com/161f714a54.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <title>inSearch</title>
+</head>
+<body>
+    <div class="account">
+        <button onclick="displayProfile()"><i class="fa fa-user"></i></button>
+        
+    </div>
+    <div id="sidebar" class="invisible">
+        <i class="fa fa-user"></i>
+        <h2>{{name}}</h2>
+        <p>{{mail}}</p>
+        <div class="sidebarManipulate">
+            <a href="#">History</a>
+            <a href="#">My Account</a>
+            <a href="/signin">Sign Out</a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="branding">
+            <img src="{{url_for('static', filename='insearch3.png')}}" alt ="branding">
+        </div>
+        <div class="search">
+            <input type="text" id="searchInp" placeholder="Search" onkeydown="getList()">
+            <div class="searchbutton">
+                <button onclick="getWebsites()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+        <div id="trieList">
+            
+        </div>
+        <div class="footer">
+            <img src="{{url_for('static', filename='incLogo1.png')}}" alt ="branding">
+        </div>
+    </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='searchengine.js')}}"></script>
+    <script>
+        var tag="";
+        function displayProfile()
+        {
+            var element = document.getElementById("sidebar");
+            element.classList.toggle("invisible");
+        }
+        var a=""
+        function getList()
+        {
+            var b=""   
+            var searchCont=document.getElementById('trieList').innerHTML=b;
+            const inp=document.getElementById("searchInp").value;
+            if (inp=="")
+            {
+                document.getElementById('trieList').innerHTML="";
+            }
+            const dict_values = {inp};
+
+            //console.log(dict_values);
+            const s = JSON.stringify(dict_values);
+            //console.log(s)
+            $.ajax({
+                url:"/trie",
+                type:"POST",
+                contentType: "application/json",
+                data: JSON.stringify(s),
+                success: function(response){
+                    a=""
+                    
+                    
+                    var resp1=response.slice(1, response.length-1);
+                    resp2=resp1.split(',')
+                    
+                    /*resp2="["incentive", "intech"]"*/
+                    for (let i=0; i<10;i++)
+                    {
+                        if(resp2[i]==undefined)
+                        {
+                            console.log('undefined')
+                            
+                        }
+                        else{
+                            var resp3=resp2[i]
+                            console.log(resp3)
+                            tag=resp3;
+                            a=a+"<div class='trieBut' ><button onclick='enterInput(this)' value="+resp3+">"+resp3+"</button></div>"    
+                        }
+                        
+                    }
+                    // ReactDOM.render(<callTag />, document.getElementById('trieList')
+            }})
+            var searchCont1=document.getElementById('trieList')
+            searchCont1.innerHTML=a;
+
+        }
+        function enterInput(ele)
+        {
+            insert=document.getElementById('searchInp')
+            insert.value=ele.value;
+        }
+        function getWebsites()
+        {
+            var tag1=document.getElementById('searchInp').value
+            console.log(tag1)
+            const dict1={tag1};
+            const s = JSON.stringify(dict1);
+            $.ajax({
+                url:"/webList",
+                type:"POST",
+                contentType: "application/json",
+                data: JSON.stringify(s),
+                success: function(responce){
+                    window.location.href = "/displayWebList";
+                }
+            })
+
+        }
+    </script>
+</body>
+</html>

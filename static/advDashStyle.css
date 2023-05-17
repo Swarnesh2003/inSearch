@@ -1,0 +1,357 @@
+
+body{
+    background-color:#1c1b1b;
+    
+}
+.main{
+    display: flex;
+    flex-direction:row;
+    margin:0px;
+}
+.sidebar{
+    width: 230px;
+    height: 100%;
+    background-color:#2b2b2c;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+}
+.sidebar .branding img{
+    margin-top: 10px;
+    margin-left:5px;
+    width:150px;
+    height:60px;
+}
+.sidebar .sc .panel{
+    margin-top: 20px;
+    font-size: 13px;
+    margin-left: 20px;
+    color: white;
+}
+.sidebar .sc .dashCont button{
+    height: 30px;
+    width: 150px;
+    margin:3px;
+    margin-left: 20px;
+    text-align: left;
+    background-color:#2b2b2c;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+.sidebar .sc .dashCont button:hover{
+    cursor: pointer;
+    background-color:rgb(39,39,98);
+}
+.sidebar .sc .low button:hover{
+    cursor: pointer;
+    background-color:rgb(39,39,98);
+}
+.sidebar .sc .dashCont button img{
+    height:15px;
+    width:15px;
+    margin-right: 10px;
+}
+hr.style14 { 
+    border: 0; 
+    margin-top: 30px;
+    height: 1px; 
+    width: 160px;
+    opacity: 0.3;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+  }
+.sidebar .sc .low{
+    margin-top:100px;
+    margin-bottom:20px;
+}
+.sidebar .sc .low button{
+    height: 30px;
+    width: 150px;
+    margin:3px;
+    margin-left: 20px;
+    text-align: left;
+    background-color:#2b2b2c;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+.sidebar .sc .low button img{
+    height:15px;
+    width:15px;
+    margin-right: 10px;
+}
+.main .content{
+    width: 800px;
+    margin-left: 20px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+
+}
+.main .content h6{
+    margin-bottom:0px;
+    margin-left:40px;
+    letter-spacing:0.6px;
+}
+.main .content h2{
+    margin-top:4px;
+    margin-left:40px;
+    letter-spacing:1.5px;
+}
+.corner .icons{
+    display: flex;
+    flex-direction: row;
+}
+.corner .icons button{
+background-color:#1c1b1b;
+border: none;
+margin-right:7px;
+margin-top:10px;
+}
+.corner .icons button img{
+        height:23px;
+        width:23px;
+}
+.corner{
+    width: 220px;
+    margin-left:5px;
+    color: white;
+}
+.corner .right{
+    background-color:#2b2b2c;
+    font-family: 'Montserrat', sans-serif;
+    height: 85.7%;
+    border-radius: 5px;
+    font-size: 10px;
+    padding: 5px;
+    margin-top: 27px;
+    margin-right:2px;
+}
+.corner .icons .us1{
+    margin-left: 96px;
+}
+.corner .icons .us1 button img{
+    height:28px;
+    width:28px;
+}
+
+  .wname{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  
+
+  
+.publish{
+    display: flex;
+    margin-top: 30px;
+    flex-direction: column;
+}
+.publish .advName input{
+    height:35px;
+    padding-left: 5px;
+    width:250px;
+    margin-top: 10px;
+    border-radius: 20px;
+    border: none;
+    margin-left: 35px;
+}
+.publish button{
+    width: 90px;
+    height:30px;
+    background-color:#0095FF;
+    color:white;
+    letter-spacing:1px;
+    border: none;
+    border-radius: 20px;
+    margin-left: 600px;
+    margin-top: 100px;
+}
+.publish button:hover{
+    cursor: pointer;
+    background-color:#0b3757
+}
+.updateCont button{
+  width: 90px;
+  height:30px;
+  background-color:#0095FF;
+  color:white;
+  letter-spacing:1px;
+  border: none;
+  border-radius: 20px;
+  margin-left: 600px;
+  margin-top: 100px;
+}
+.updateCont button:hover{
+  cursor: pointer;
+  background-color:#0b3757
+}
+.AdvInp{
+    display: flex;
+    flex-direction: row;
+    height:35px;
+    padding-left: 5px;
+    width:650px;
+    margin-top: 40px;
+    border-radius: 20px;
+    border: none;
+    margin-left: 35px;
+}
+.AdvInp h5{
+    margin-top: 0px;
+    margin-right: 25px;
+}
+.publish .addTag input{
+    height:35px;
+    padding-left: 5px;
+    width:250px;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: none;
+    margin-left: 35px;
+}
+  .addTag{
+    display: flex;
+    flex-direction: row;
+  }
+  .publish h1{
+    margin-left: 35px;
+  }
+  .addTag{
+    margin-top:130px;
+  }
+  .addTag button{
+    height: 35px;
+    margin: 20px;
+    width: 35px;
+    border-radius: 20px;
+    border:none;
+    align-items: center;
+    justify-content:center;
+    text-align: center;
+    
+  }
+  .addTag button:hover{
+    cursor: pointer;
+    
+  }
+
+  .addTag .addTagImg{
+    background-image: url('plus1.png');
+    background-size: cover;
+  }
+  .dashboard .header{
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+  }
+  .header .wallet h5{
+    margin-top:10px;
+    margin-left: 7px;
+    letter-spacing:0.6px;
+}
+.header .wallet h2{
+    margin-top:-15px;
+    margin-left: 15px;
+    letter-spacing:0.6px;
+}
+.header .views h5{
+    margin-top:10px;
+    margin-left: 7px;
+    letter-spacing:0.6px;
+}
+.header .views h2{
+    margin-top:-15px;
+    margin-left: 15px;
+    letter-spacing:0.6px;
+}
+.header .clicks h5{
+    margin-top:10px;
+    margin-left: 7px;
+    letter-spacing:0.6px;
+}
+.header .clicks h2{
+    margin-top:-15px;
+    margin-left: 15px;
+    letter-spacing:0.6px;
+}
+
+  .header .wallet{
+    margin-left: 15px;
+    margin-right: 70px;
+    background-color:#2b2b2c;
+    height: 80px;
+    width: 170px;
+    /*padding: 4px;*/
+    border-radius: 5px;
+  }
+
+  
+  .header .views{
+    margin-right: 70px;
+    background-color:#2b2b2c;
+    height: 80px;
+    width: 170px;
+    
+    border-radius: 5px;
+  }
+
+  
+  .header .clicks{
+    
+    background-color:#2b2b2c;
+    height: 80px;
+    width: 170px;
+   
+    border-radius: 5px;
+  }
+
+  .updateCont .editName{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .updateCont .editLink{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .updateCont .editName p{
+    margin-right: 30px;
+  }
+  .updateCont .editName input{
+    height:30px;
+    border-radius: 20px;
+    border: none;
+    padding-left:10px;
+    margin-top: 10px;
+  }
+  .updateCont .editLink input{
+    height:30px;
+    border-radius: 20px;
+    border: none;
+    padding-left:10px;
+    margin-top: 10px;
+  }
+  .updateCont .addTag input{
+    height:30px;
+    border-radius: 20px;
+    border: none;
+    padding-left:10px;
+    margin-top: 23px;
+  }
+  .updateCont .editLink p{
+    margin-right: 45px;
+  }
+  .updateCont{
+    margin-left: 40px;
+    margin-top: 45px;
+  }
+  .inpAdd{
+    height:150px;
+    width:250px;
+  }
